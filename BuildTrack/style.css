@@ -807,3 +807,995 @@ footer span {
         padding: 14px
     }
 }
+
+/* ===== v2: landing, modals, persistent shell, scrolling, transitions ===== */
+html {
+    scroll-behavior: smooth
+}
+
+body.in-app {
+    overflow: hidden
+}
+
+.eyebrow.gold {
+    color: var(--gold)
+}
+
+.btn.big {
+    padding: 14px 22px;
+    font-size: 13px
+}
+
+.btn.ghost {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #ffffff55;
+    display: inline-block
+}
+
+.btn.ghost:hover {
+    background: #ffffff18
+}
+
+.btn,
+.nav-item,
+.quick-action,
+.role-tab,
+.chip {
+    transition: background .2s, color .2s, transform .2s, box-shadow .2s
+}
+
+.btn:hover {
+    transform: translateY(-1px)
+}
+
+.landing {
+    background: var(--cream)
+}
+
+.l-nav {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 5vw;
+    background: #50352dee;
+    backdrop-filter: blur(8px)
+}
+
+.brand-lg {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffd05d;
+    font: 800 18px Manrope
+}
+
+.brand-lg .brand-mark {
+    margin: 0
+}
+
+.l-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+
+.l-link {
+    color: #f0e8df;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 8px
+}
+
+.hero {
+    padding: 12vh 5vw 10vh;
+    color: #fff;
+    text-align: center;
+    background: radial-gradient(circle at 50% 0, #8a5a3c55, transparent 60%), linear-gradient(#ffffff0a 1px, transparent 1px) 0 0/44px 44px, linear-gradient(90deg, #ffffff0a 1px, transparent 1px) 0 0/44px 44px, var(--brown)
+}
+
+.hero h1 {
+    font: 800 clamp(30px, 5vw, 54px)/1.12 Manrope;
+    margin: 14px 0
+}
+
+.hero p {
+    max-width: 620px;
+    margin: 0 auto 26px;
+    color: #e7d9cb;
+    font-size: 15px;
+    line-height: 1.6
+}
+
+.hero-cta {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-decoration: none
+}
+
+.hero-stats {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 46px;
+    color: #d8c9bd;
+    font-size: 12px
+}
+
+.hero-stats b {
+    display: block;
+    font: 800 30px Manrope;
+    color: var(--gold)
+}
+
+.section {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 64px 5vw 10px
+}
+
+.section h2,
+.cta h2 {
+    font: 800 28px Manrope;
+    color: var(--brown);
+    margin: 0
+}
+
+.sub {
+    color: var(--muted);
+    margin: 8px 0 24px;
+    font-size: 13px
+}
+
+.role-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px
+}
+
+.role-tab {
+    border: 1px solid var(--line);
+    background: var(--paper);
+    padding: 10px 14px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--brown)
+}
+
+.role-tab span {
+    margin-right: 6px
+}
+
+.role-tab:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow)
+}
+
+.role-tab.on {
+    background: var(--gold);
+    border-color: var(--gold)
+}
+
+.role-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 28px;
+    box-shadow: var(--shadow)
+}
+
+.role-panel.swap {
+    animation: rise .35s ease
+}
+
+.role-panel h3 {
+    font: 800 22px Manrope;
+    margin: 0 0 6px;
+    color: var(--brown)
+}
+
+.role-panel h4 {
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #a28e79;
+    margin: 20px 0 8px
+}
+
+.tasklist {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+.tasklist li {
+    padding: 8px 0 8px 24px;
+    position: relative;
+    border-bottom: 1px solid #f0eadc;
+    font-size: 13px
+}
+
+.tasklist li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-weight: 800
+}
+
+.role-panel .btn {
+    margin-top: 20px
+}
+
+.acc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px solid #f0eadc;
+    font-size: 12px
+}
+
+.acc.off {
+    opacity: .4
+}
+
+.acc i {
+    font-style: normal;
+    font-size: 9px;
+    font-weight: 700;
+    background: #e3f3e9;
+    color: #28784d;
+    padding: 3px 7px;
+    border-radius: 20px;
+    margin-left: 4px
+}
+
+.matrix {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 8px
+}
+
+.matrix table {
+    min-width: 900px
+}
+
+.matrix td {
+    text-align: center;
+    font-size: 11px
+}
+
+.matrix td:first-child {
+    text-align: left
+}
+
+.matrix .mh {
+    cursor: pointer;
+    text-align: center
+}
+
+.matrix .mh:hover {
+    background: var(--gold2)
+}
+
+.matrix i {
+    font-style: normal;
+    font-size: 9px;
+    font-weight: 800;
+    margin: 0 2px
+}
+
+.matrix i.y {
+    color: var(--green)
+}
+
+.matrix i.n {
+    color: #d8d0c2
+}
+
+.none {
+    color: #cfc6b8
+}
+
+.cta {
+    text-align: center;
+    padding: 70px 5vw;
+    margin-top: 50px;
+    background: var(--brown);
+    color: #fff
+}
+
+.cta h2 {
+    color: #fff;
+    margin-bottom: 20px
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: #21150f99;
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .25s, visibility .25s;
+    overflow: auto
+}
+
+.modal.show {
+    opacity: 1;
+    visibility: visible
+}
+
+.modal .login-card {
+    position: relative;
+    transform: translateY(16px) scale(.98);
+    transition: transform .3s;
+    max-height: 94vh;
+    overflow: auto
+}
+
+.modal.show .login-card {
+    transform: none
+}
+
+.login-card.wide {
+    width: min(470px, 100%)
+}
+
+.login-card select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    background: #fff
+}
+
+.login-card small {
+    margin: 14px 0 6px
+}
+
+.login-card a {
+    color: #a86d08;
+    font-weight: 700
+}
+
+.x {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    border: 0;
+    background: none;
+    font-size: 26px;
+    color: var(--muted)
+}
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px
+}
+
+.chip {
+    font-size: 10px;
+    background: #fff0c8;
+    color: #7a5410;
+    padding: 4px 9px;
+    border-radius: 20px;
+    font-weight: 700
+}
+
+.btn-chip {
+    border: 0
+}
+
+.btn-chip:hover {
+    background: var(--gold)
+}
+
+/* persistent shell: only #content swaps, the main area scrolls on its own with a visible bar */
+.app {
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden
+}
+
+.main {
+    height: 100vh;
+    height: 100dvh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #d49a2a #f3ead6
+}
+
+.main::-webkit-scrollbar,
+#navigation::-webkit-scrollbar {
+    width: 10px
+}
+
+.main::-webkit-scrollbar-track {
+    background: #f3ead6
+}
+
+.main::-webkit-scrollbar-thumb {
+    background: #d49a2a;
+    border-radius: 8px;
+    border: 2px solid #f3ead6
+}
+
+#navigation {
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #f5aa19 #ffffff14
+}
+
+#navigation::-webkit-scrollbar-track {
+    background: #ffffff14;
+    border-radius: 8px
+}
+
+#navigation::-webkit-scrollbar-thumb {
+    background: #f5aa19;
+    border-radius: 8px
+}
+
+.nav-item {
+    text-decoration: none
+}
+
+.nav-item.active {
+    transform: translateX(3px)
+}
+
+.content {
+    transition: opacity .15s ease, transform .15s ease
+}
+
+.content.leave {
+    opacity: 0;
+    transform: translateY(8px)
+}
+
+.content.enter {
+    animation: rise .35s ease both
+}
+
+.app.fade-in {
+    animation: fade .5s ease
+}
+
+.quick-action {
+    text-decoration: none
+}
+
+.quick-action:hover,
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(67, 46, 34, .14)
+}
+
+.stat-card {
+    transition: transform .2s, box-shadow .2s
+}
+
+.bar-fill {
+    transition: width .8s ease
+}
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(12px)
+    }
+
+    to {
+        opacity: 1;
+        transform: none
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@media(max-width:700px) {
+    .role-panel {
+        grid-template-columns: 1fr
+    }
+
+    .l-link {
+        display: none
+    }
+
+    .hero-stats {
+        gap: 22px
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important
+    }
+}
+
+/* ===== v3: logo, minimizable sidebar ===== */
+.logo-pill {
+    display: block;
+    background: #fff;
+    border-radius: 8px;
+    padding: 5px 12px
+}
+
+.logo-pill img {
+    display: block;
+    height: 34px
+}
+
+.hero-logo {
+    display: inline-block;
+    background: #fff;
+    border-radius: 16px;
+    padding: 14px 26px;
+    box-shadow: 0 18px 50px #0006;
+    margin-bottom: 10px
+}
+
+.hero-logo img {
+    display: block;
+    width: min(300px, 68vw)
+}
+
+.role-panel {
+    grid-template-columns: 1fr;
+    max-width: 760px
+}
+
+.brand {
+    position: relative;
+    justify-content: center;
+    padding: 0 0 18px;
+    min-height: 74px
+}
+
+.logo-full {
+    background: #fff;
+    border-radius: 8px;
+    padding: 6px 10px;
+    width: 100%
+}
+
+.logo-full img {
+    display: block;
+    width: 100%
+}
+
+.logo-mini {
+    display: none
+}
+
+.sidebar,
+.main {
+    transition: width .3s ease, margin-left .3s ease, transform .25s
+}
+
+.collapse-btn {
+    position: absolute;
+    top: 26px;
+    right: -13px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 2px solid var(--cream);
+    background: var(--gold);
+    color: #4a3025;
+    font: 800 16px/1 Manrope;
+    z-index: 25;
+    display: grid;
+    place-items: center;
+    padding: 0 0 2px;
+    transition: transform .2s
+}
+
+.collapse-btn:hover {
+    transform: scale(1.12)
+}
+
+.logout {
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+body.collapsed .sidebar {
+    width: 68px;
+    padding-left: 9px;
+    padding-right: 9px
+}
+
+body.collapsed .main {
+    margin-left: 68px
+}
+
+body.collapsed .logo-full,
+body.collapsed .nl,
+body.collapsed .nav-label {
+    display: none
+}
+
+body.collapsed .logo-mini {
+    display: grid;
+    margin: 0
+}
+
+body.collapsed .brand {
+    min-height: 0;
+    padding-bottom: 14px
+}
+
+body.collapsed .nav-item {
+    justify-content: center;
+    padding: 11px 0
+}
+
+body.collapsed .nav-item.active {
+    transform: none
+}
+
+body.collapsed .signed-in {
+    justify-content: center
+}
+
+body.collapsed .logout {
+    justify-content: center
+}
+
+@media(max-width:700px) {
+    .collapse-btn {
+        display: none
+    }
+
+    body.collapsed .main {
+        margin-left: 0
+    }
+
+    body.collapsed .sidebar {
+        width: 235px
+    }
+
+    body.collapsed .logo-full,
+    body.collapsed .nl,
+    body.collapsed .nav-label {
+        display: revert
+    }
+
+    body.collapsed .logo-mini {
+        display: none
+    }
+
+    body.collapsed .nav-item {
+        justify-content: flex-start;
+        padding: 10px 11px
+    }
+}
+
+/* ===== v4: inline login + live role tasks ===== */
+.hero {
+    padding: 7vh 5vw 9vh
+}
+
+.hero .lead {
+    margin-bottom: 34px
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: minmax(300px, 420px) minmax(300px, 520px);
+    gap: 28px;
+    justify-content: center;
+    align-items: stretch;
+    text-align: left
+}
+
+.hero .login-card {
+    width: 100%;
+    margin: 0
+}
+
+.logo-inline {
+    background: #fff;
+    margin-bottom: 6px
+}
+
+.logo-inline img {
+    display: block;
+    width: 180px;
+    margin: 0 auto
+}
+
+.login-card h2 {
+    font: 800 24px Manrope;
+    color: var(--brown);
+    margin: 8px 0 0
+}
+
+.hero .login-card p.muted {
+    color: var(--muted);
+    max-width: none;
+    margin: 6px 0 4px;
+    font-size: 13px
+}
+
+.hero .login-card p.error {
+    color: var(--red);
+    max-width: none;
+    margin: 6px 0;
+    min-height: 14px;
+    font-size: 11px
+}
+
+.hero .role-panel {
+    display: block;
+    max-width: none;
+    background: #ffffff12;
+    border: 1px solid #ffffff26;
+    backdrop-filter: blur(6px);
+    color: #fff;
+    padding: 32px;
+    box-shadow: none
+}
+
+.hero .role-panel h3 {
+    color: #fff;
+    font-size: 26px;
+    margin: 8px 0
+}
+
+.hero .role-panel p {
+    color: #e7d9cb;
+    margin: 0 0 18px;
+    font-size: 14px;
+    max-width: none
+}
+
+.hero .tasklist li {
+    border-color: #ffffff22;
+    font-size: 14px;
+    padding: 11px 0 11px 28px
+}
+
+.hero .tasklist li:before {
+    color: var(--gold2)
+}
+
+.hero .role-panel .btn {
+    margin-top: 24px
+}
+
+@media(max-width:860px) {
+    .hero-grid {
+        grid-template-columns: 1fr
+    }
+}
+
+/* ===== v5: visible login labels, vertical-only scrolling ===== */
+.login-card {
+    color: var(--ink)
+}
+
+.login-card label {
+    color: var(--brown)
+}
+
+.login-card input::placeholder {
+    color: #a99e92
+}
+
+.main,
+.content {
+    overflow-x: hidden
+}
+
+.split>div,
+.panel,
+.table-wrap {
+    min-width: 0
+}
+
+.table-wrap {
+    overflow-x: visible
+}
+
+table {
+    min-width: 0;
+    width: 100%
+}
+
+th {
+    white-space: normal
+}
+
+th,
+td {
+    overflow-wrap: anywhere;
+    word-break: break-word
+}
+
+@media(max-width:700px) {
+
+    table,
+    thead,
+    tbody,
+    tr,
+    th,
+    td {
+        display: block;
+        width: 100%
+    }
+
+    thead {
+        display: none
+    }
+
+    tbody tr {
+        padding: 10px 14px;
+        border-bottom: 1px solid var(--line)
+    }
+
+    td {
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        border: 0;
+        padding: 5px 0;
+        text-align: right
+    }
+
+    td:before {
+        content: attr(data-label);
+        font-weight: 800;
+        color: var(--brown);
+        text-align: left;
+        flex: 0 0 40%
+    }
+}
+
+.gold-text {
+    color: var(--gold)
+}
+
+/* ===== v6: no horizontal scroll anywhere ===== */
+html,
+body {
+    max-width: 100%;
+    overflow-x: clip
+}
+
+.landing,
+.app,
+.hero,
+.section,
+.cta {
+    max-width: 100%;
+    overflow-x: clip
+}
+
+img,
+svg,
+video {
+    max-width: 100%
+}
+
+.hero-grid {
+    grid-template-columns: minmax(0, 420px) minmax(0, 520px)
+}
+
+.hero-grid>* {
+    min-width: 0
+}
+
+.l-nav {
+    flex-wrap: wrap;
+    gap: 10px
+}
+
+.toolbar,
+.page-heading {
+    flex-wrap: wrap
+}
+
+.toolbar input {
+    min-width: 0;
+    flex: 1 1 180px
+}
+
+@media(max-width:860px) {
+    .hero-grid {
+        grid-template-columns: minmax(0, 1fr)
+    }
+}
+
+@media(max-width:700px) {
+    .login-card {
+        padding: 28px 20px
+    }
+
+    .l-nav {
+        padding: 12px 4vw
+    }
+
+    .hero {
+        padding-left: 4vw;
+        padding-right: 4vw
+    }
+}
+
+/* ===== v7: sidebar (dashboard menu) scrolls vertically only ===== */
+.sidebar {
+    overflow-x: hidden
+}
+
+#navigation {
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-width: 0
+}
+
+.nav-item {
+    min-width: 0;
+    max-width: 100%
+}
+
+.nav-item .nl {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.side-bottom,
+.brand,
+.signed-in,
+.logout {
+    min-width: 0;
+    max-width: 100%
+}
+
+.signed-in .nl {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+body.collapsed #navigation {
+    scrollbar-width: none
+}
+
+body.collapsed #navigation::-webkit-scrollbar {
+    display: none
+}
